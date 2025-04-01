@@ -1,14 +1,30 @@
-// 🔄 Refactoro the Changer  
-// Przenieś teraz odpowiednie wywołania logów z routing.js i zastąp tam logowanie bezpośrednie wywołaniem tych funkcji.
+const {STATUS_CODE} = require("../constants/statusCode");
+const getInfoLog = (method, url) => {
+    console.log(
+        `INFO (${new Date(Date.now()).toUTCString()}): ${method} - ${url}`
+    );
+};
 
-const getInfoLog = () => {};
+const getErrorLog = (url) => {
+    console.warn(
+        `ERROR (${new Date(
+            Date.now()
+        ).toUTCString()}): requested url ${url} doesn't exist.`
+    );
+};
 
-const getErrorLog = () => {};
+const getProcessLog = (message) => {
+    console.log(
+        `PROCESS (${new Date(
+            Date.now()
+        ).toUTCString()}): logout has been initiated and the application will be closed.`
+    );
+    process.exit();
+};
 
-const getProcessLog = () => {};
 
 module.exports = {
-  getInfoLog,
-  getErrorLog,
-  getProcessLog,
+    getInfoLog,
+    getErrorLog,
+    getProcessLog,
 };
